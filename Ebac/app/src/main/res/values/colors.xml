@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#292b3d</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorButtonLogin">#2b9e6e</color>
+
+    <color name="grayligth">#FAFAFA</color>
+    <color name="startblue">#09C6DF</color>
+    <color name="startgreenn">#6ee4d4</color>
+    <color name="startgreen">#e4b36e</color>
+    <color name="endblue">#0BCCE6</color>
+    <color name="endgreen">#5cc6b7</color>
+</resources>
