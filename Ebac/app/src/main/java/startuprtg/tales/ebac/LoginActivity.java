@@ -3,7 +3,6 @@ package startuprtg.tales.ebac;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -14,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 /**
  * Created by Raphael on 19/08/2018.
@@ -49,6 +51,18 @@ public class LoginActivity extends AppCompatActivity {
         loginEd = (EditText) findViewById(R.id.editText);
         pwdEd = (EditText) findViewById(R.id.editText3);
         loginBtn = (Button) findViewById(R.id.login_btn);
+
+        // Create Mask CPF/CNPJ
+        SimpleMaskFormatter smfCPF = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
+        SimpleMaskFormatter smfCNPJ = new SimpleMaskFormatter("NN.NNN.NNN/NNNN-NN");
+        MaskTextWatcher mtwCPF = new MaskTextWatcher(loginEd, smfCPF);
+        MaskTextWatcher mtwCNPJ = new MaskTextWatcher(loginEd, smfCNPJ);
+        if(loginEd.length()>14) {
+            loginEd.addTextChangedListener(mtwCNPJ);
+        }else {
+            loginEd.addTextChangedListener(mtwCPF);
+        }
+
 
         if(sessionManager.isLogged()){
             loginEd.setText(sessionManager.getUserLogin());
@@ -86,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
         if(!isOnline()){
             Snackbar.make(getWindow().getDecorView().getRootView(),"Não há conexão com a internet", Snackbar.LENGTH_LONG).show();
         } else {
-            String login = loginEd.getText().toString();
+            String login = loginEd.getText().toString().replace(".","").replace("-","").replace("/","");
             String pwd = pwdEd.getText().toString();
 
             if (login.equals("123456789") && pwd.equals("123456")) {
