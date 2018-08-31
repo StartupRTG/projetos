@@ -57,7 +57,7 @@
             android:orientation="horizontal"
             android:paddingLeft="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="100dp">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -80,6 +80,35 @@
                 android:layout_below="@+id/contas"
                 android:layout_marginTop="4dp"
                 android:id="@+id/rv" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:id="@+id/ic_dollarP"
+                android:src="@drawable/ic_attach_money_black_24dp"/>
+            <TextView
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/ic_dollarP"
+                android:id="@+id/contasP"
+                android:paddingLeft="10dp"
+                android:textSize="20sp"
+                android:text="Contas pagas:"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/contasP"
+                android:layout_marginTop="4dp"
+                android:id="@+id/rv2" />
         </RelativeLayout>
     </LinearLayout>
 

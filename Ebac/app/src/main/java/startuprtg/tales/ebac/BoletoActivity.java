@@ -27,6 +27,7 @@ import static startuprtg.tales.ebac.DbConnection.getBoleto;
 public class BoletoActivity extends AppCompatActivity {
 //    List<Boleto> boletoList = getBoleto();
     List<Boleto> boletoList;
+    List<Boleto> boletoListPago;
     ImageButton logoutBtn;
 
     private SessionManager sessionManager;
@@ -58,6 +59,14 @@ public class BoletoActivity extends AppCompatActivity {
                 logout();
             }
         });
+
+        // Teste Tales
+        RecyclerView rv2 = (RecyclerView)findViewById(R.id.rv2);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+
+        BoletoAdapter adapter2 = new BoletoAdapter(boletoListPago);
+        rv2.setAdapter(adapter2);
+
     }
 
     @Override
