@@ -12,7 +12,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#f99d14">
+        android:background="#f99d14"
+        android:layout_weight="0">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,42 +52,49 @@
         android:layout_gravity="center"
         android:layout_margin="4dp"
         android:background="#FFFF"
+        android:layout_weight="1"
+        android:weightSum="1"
         android:alpha="0.9">
+
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
             android:layout_marginTop="5dp"
             android:orientation="horizontal"
-            android:paddingLeft="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:paddingLeft="5dp">
+
             <ImageView
+                android:id="@+id/ic_dollar"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:id="@+id/ic_dollar"
-                android:src="@drawable/ic_attach_money_black_24dp"/>
+                android:src="@drawable/ic_attach_money_black_24dp" />
+
             <TextView
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"
+                android:id="@+id/contas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_toEndOf="@+id/ic_dollar"
-                android:id="@+id/contas"
                 android:paddingLeft="10dp"
+                android:text="Conta em aberto:"
                 android:textSize="20sp"
-                android:text="Conta em aberto:"/>
+                android:textStyle="bold" />
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/contas"
-                android:layout_marginTop="4dp"
-                android:id="@+id/rv" />
+                android:layout_marginTop="4dp" />
         </RelativeLayout>
         <RelativeLayout
             android:layout_marginTop="25dp"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="0.5">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
