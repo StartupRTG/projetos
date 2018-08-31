@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -15,11 +14,15 @@ import java.util.List;
 
 public class BoletoAdapter extends RecyclerView.Adapter<BoletoAdapter.BoletoViewHolder> {
     public static class BoletoViewHolder extends RecyclerView.ViewHolder {
-        Button boletoNome;
+        TextView boletoName;
+        TextView boletoExpire;
+        TextView boletoValue;
 
         BoletoViewHolder(View itemView){
             super(itemView);
-            boletoNome = (Button) itemView.findViewById(R.id.boleto_nome);
+            boletoName = (TextView) itemView.findViewById(R.id.info_text1);
+            boletoExpire = (TextView) itemView.findViewById(R.id.info_text2);
+            boletoValue = (TextView) itemView.findViewById(R.id.info_text3);
         }
     }
 
@@ -32,7 +35,7 @@ public class BoletoAdapter extends RecyclerView.Adapter<BoletoAdapter.BoletoView
     @Override
     public int getItemCount() {
 //        return boletos.size();
-        return 3;
+        return 10;
     }
 
     @Override
@@ -44,7 +47,10 @@ public class BoletoAdapter extends RecyclerView.Adapter<BoletoAdapter.BoletoView
 
     @Override
     public void onBindViewHolder(BoletoViewHolder holder, int position) {
-        holder.boletoNome.setText("Boleto");
+//        if(boletos != null){
+//            holder.boletoName.setText(boletos.get(position).getNome());
+//            holder.boletoExpire.setText(boletos.get(position).getData());
+//            holder.boletoValue.setText(boletos.get(position).getValor());
+//        }
     }
-
 }

@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
+import static startuprtg.tales.ebac.DbConnection.getUser;
+
 /**
  * Created by Raphael on 19/08/2018.
  */
@@ -102,6 +104,14 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             String login = loginEd.getText().toString().replace(".","").replace("-","").replace("/","");
             String pwd = pwdEd.getText().toString();
+
+//            if(getUser(login, pwd)){
+//                sessionManager.createLoggedSession(login, pwd);
+//                newIntent(getApplicationContext(), BoletoActivity.class);
+//                finish();
+//            } else {
+//                Toast.makeText(getApplicationContext(), "Usuário não encontrado.", Toast.LENGTH_LONG).show();
+//            }
 
             if (login.equals("123456789") && pwd.equals("123456")) {
                 sessionManager.createLoggedSession(login, pwd);

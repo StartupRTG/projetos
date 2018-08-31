@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import java.util.EventListener;
 
+import static startuprtg.tales.ebac.DbConnection.connect;
+
 public class MainActivity extends AppCompatActivity {
 
     RelativeLayout activity_loginn;
@@ -25,17 +27,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
-        if(isOnline()) {
-            SessionManager sessionManager = new SessionManager(this);
-            sessionManager.checkLog();
-        } else {
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
+//        if(connect()) {
+            if (isOnline()) {
+                SessionManager sessionManager = new SessionManager(this);
+                sessionManager.checkLog();
+            } else {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+//        } else {
+//            Toast.makeText(getApplicationContext(), "Não foi possível conectar ao banco de dados.", Toast.LENGTH_LONG).show();
+//        }
 
         finish();
     }
