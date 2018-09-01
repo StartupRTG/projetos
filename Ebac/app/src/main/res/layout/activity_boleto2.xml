@@ -59,7 +59,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="0.35"
             android:layout_marginTop="5dp"
             android:orientation="horizontal"
             android:paddingLeft="5dp">
@@ -94,7 +94,7 @@
             android:paddingLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5">
+            android:layout_weight="0.65">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
