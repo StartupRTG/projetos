@@ -8,14 +8,18 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+
+import org.w3c.dom.Text;
 
 import static startuprtg.tales.ebac.DbConnection.getUser;
 
@@ -23,9 +27,10 @@ import static startuprtg.tales.ebac.DbConnection.getUser;
  * Created by Raphael on 19/08/2018.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnTouchListener {
     Button loginBtn;
     EditText loginEd, pwdEd;
+    TextView recPwd;
     private SessionManager sessionManager;
     private Activity activity;
     private static Usuario usuario;
@@ -53,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         loginEd = (EditText) findViewById(R.id.editText);
         pwdEd = (EditText) findViewById(R.id.editText3);
         loginBtn = (Button) findViewById(R.id.login_btn);
+        recPwd = (TextView) findViewById(R.id.textView2);
 
         // Create Mask CPF/CNPJ
         SimpleMaskFormatter smfCPF = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
@@ -65,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
             loginEd.addTextChangedListener(mtwCPF);
         }
 
+        recPwd.setOnTouchListener(this);
 
         if(sessionManager.isLogged()){
             loginEd.setText(sessionManager.getUserLogin());
@@ -120,6 +127,8 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(), "CNPJ/CPF ou Senha incorretos.", Toast.LENGTH_LONG).show();
             }
+
+
         }
     }
 
@@ -141,5 +150,12 @@ public class LoginActivity extends AppCompatActivity {
         ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         return manager.getActiveNetworkInfo() != null && manager.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        newIntent(getApplicationContext(), RecuperarSenha.class);
+        finish();
+        return true;
     }
 }
