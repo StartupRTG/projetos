@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-
     public boolean isOnline() {
         ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
