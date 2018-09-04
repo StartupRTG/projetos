@@ -1,10 +1,16 @@
 package startuprtg.tales.ebac;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -17,12 +23,42 @@ public class BoletoAdapter extends RecyclerView.Adapter<BoletoAdapter.BoletoView
         TextView boletoName;
         TextView boletoExpire;
         TextView boletoValue;
+        ImageButton cpBtn;
+        ImageButton dwnBtn;
 
-        BoletoViewHolder(View itemView){
+        BoletoViewHolder(final View itemView){
             super(itemView);
             boletoName = (TextView) itemView.findViewById(R.id.info_text1);
             boletoExpire = (TextView) itemView.findViewById(R.id.info_text2);
             boletoValue = (TextView) itemView.findViewById(R.id.info_text3);
+            cpBtn = (ImageButton) itemView.findViewById(R.id.cp_btn);
+            dwnBtn = (ImageButton) itemView.findViewById(R.id.dwn_btn);
+
+            cpBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String text = "0987654321";
+                    Toast.makeText(view.getContext(), "Código de barras copiado para área de transferência.", Toast.LENGTH_LONG).show();
+                    int sdk = android.os.Build.VERSION.SDK_INT;
+                    if (sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
+                        android.text.ClipboardManager clipboard = (android.text.ClipboardManager) view.getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                        clipboard.setText(text);
+                    } else {
+                        android.content.ClipboardManager clipboard = (android.content.ClipboardManager) view.getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                        android.content.ClipData clip = android.content.ClipData.newPlainText("Label", text);
+                        clipboard.setPrimaryClip(clip);
+                    }
+
+                    Toast.makeText(view.getContext(), "Código de barras copiado para área de transferência.", Toast.LENGTH_LONG).show();
+                }
+            });
+
+            dwnBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    
+                }
+            });
         }
     }
 
@@ -35,7 +71,7 @@ public class BoletoAdapter extends RecyclerView.Adapter<BoletoAdapter.BoletoView
     @Override
     public int getItemCount() {
 //        return boletos.size();
-        return 10;
+        return 2;
     }
 
     @Override
@@ -47,10 +83,5 @@ public class BoletoAdapter extends RecyclerView.Adapter<BoletoAdapter.BoletoView
 
     @Override
     public void onBindViewHolder(BoletoViewHolder holder, int position) {
-//        if(boletos != null){
-//            holder.boletoName.setText(boletos.get(position).getNome());
-//            holder.boletoExpire.setText(boletos.get(position).getData());
-//            holder.boletoValue.setText(boletos.get(position).getValor());
-//        }
     }
 }
