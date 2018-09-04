@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/bg_img"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="startuprtg.tales.ebac.MainActivity">
 
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    android:alpha="0.9"
+    >
 
     <ImageView
         android:layout_width="60dp"
@@ -26,22 +30,23 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="Recuperar senha"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:layout_above="@+id/editText"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="95dp"
         android:textSize="30sp"
-        android:textColor="#ffffff"/>
+        android:textColor="#216364"/>
 
     <EditText
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:inputType="number"
+        android:inputType="textWebEmailAddress"
         android:drawableLeft="@drawable/ic_mail_black_24dp"
         android:ems="10"
         android:hint="E-mail"
-        android:textColor="#FFF"
-        android:textColorHint="#FFF"
+        android:textColor="#205563"
+        android:textColorHint="#205563"
         android:textSize="16dp"
         android:background="#11000000"
         android:id="@+id/editText"
@@ -55,7 +60,7 @@
         android:layout_height="40dp"
         android:text="Recuperar"
         android:textColor="#fff"
-        android:background="@drawable/button_bg_rounded_border"
+        android:background="@drawable/button_recupera_login"
         android:id="@+id/login_btn"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/editText"
@@ -70,10 +75,12 @@
         android:text="Esqueceu sua senha? Digite o e-mail associado a sua conta, que enviaremos uma nova senha provisória."
         android:textSize="14sp"
         android:textAlignment="gravity"
-        android:textColor="#ffffff"
+        android:textColor="#205563"
         android:layout_above="@+id/editText"
         android:layout_alignStart="@+id/editText"
         android:layout_marginBottom="18dp" />
 
-
 </RelativeLayout>
+
+
+</LinearLayout>
